@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Kiedy Kurs?</title>
+</head>
+
+	<style>
+		#clock {
+			  color: #E60000;
+			  font-family: "Arial Black","Arial Bold",Gadget,sans-serif;
+			  font-size: 130px;
+			}	
+
+		@media (min-width: 1200px) {
+		#clock { 
+		      width: 1200px;
+			  height: 100px;
+			  padding: 20px;
+			  position: absolute;
+			  top: 50%;
+			  left: 20%;
+			  margin: -70px 0 0 -170px;
+
+			  font-size: 2.5em;
+			}
+		}
+
+	</style>
+
+	<link rel="icon" type="image/png" href="flag.png">
+
+<body>
+	
+	<div id="clock">Kiedy Kurs?</div>
+
+    <script>
+   		var target_date = new Date("Jul 11, 2016").getTime(); 
+   		var months, days, hours, minutes, seconds;
+		var clock = document.getElementById("clock");
+
+		setInterval(function () {
+			var current_date = new Date().getTime();
+		    var seconds_left = (target_date - current_date) / 1000;
+		 
+		    months = parseInt(seconds_left / 2628000);
+		    seconds_left = seconds_left % 2628000;
+
+			days = parseInt(seconds_left / 86400);
+		    seconds_left = seconds_left % 86400;
+		     
+		    hours = parseInt(seconds_left / 3600);
+		    seconds_left = seconds_left % 3600;
+		     
+		    minutes = parseInt(seconds_left / 60);
+		    seconds = parseInt(seconds_left % 60);
+		     
+			clock.innerHTML = months + " miesiące, " + days + " dni, " + hours + " godzin, " + minutes + " minut, " + seconds + " sekund";  
+		}, 1000);
+   	</script>
+</body>
+</html>
+
+<!-- 
+TODO LIST
+add styling DONE
+publish DONE
+add proper grammar
+add 'kurs jest teraz!'
+add countdown to end of kurs
+generify so that can enter start and end dates
+	for multiple years
+possibly make it so that if you don't specify dates it will guess indefinitely
+-->
